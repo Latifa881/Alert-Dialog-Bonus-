@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Button
+import android.widget.Toast
 import kotlinx.android.synthetic.main.dialogue_view.view.*
 
 class MainActivity : AppCompatActivity() {
@@ -25,12 +26,13 @@ class MainActivity : AppCompatActivity() {
             }
             dialogView.go.setOnClickListener {
                 val intent= Intent(this,MainActivity2::class.java)
-                intent.putExtra("textView",dialogView.textView.text)
+                Toast.makeText(this,dialogView.textView.text,Toast.LENGTH_SHORT).show()
+                intent.putExtra("textView",dialogView.textView.text.toString())
                 startActivity(intent)
             }
             val alertDialog: AlertDialog = builder.create()
             // Set other dialog properties
-            alertDialog.setCancelable(false)
+            alertDialog.setCancelable(true)
             alertDialog.show()
         }
     }
